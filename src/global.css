@@ -1,0 +1,22 @@
+.scrollbar-custom::-webkit-scrollbar {
+  width: 10px; /* thicker scrollbar */
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background: transparent; /* fully transparent track */
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background-color: #06c750; /* dark green */
+  border-radius: 8px;
+  border: 3px solid transparent; /* optional for spacing */
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb:hover {
+  background-color: #22c55e; /* hover green */
+}
+
+.scrollbar-custom {
+  scrollbar-width: auto; /* makes it thicker */
+  scrollbar-color: #06c750 transparent; /* thumb full green, track transparent */
+}
