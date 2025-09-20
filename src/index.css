@@ -1,9 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Minecraft";
+  src: url("/src/assets/minecraft-font/MinecraftRegular-Bmg3.otf")
+    format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Set body default */
 body {
-  font-family: "Press Start 2P", sans-serif;
+  font-family: "Minecraft", sans-serif;
 }

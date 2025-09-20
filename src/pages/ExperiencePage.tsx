@@ -1,48 +1,57 @@
-import React from 'react';
-import ExperienceCard from '../components/ExperienceCard';
-import '../global.css';
+import React, { useState } from "react"
+import ExperienceBook from "../components/ExperienceBook"
+// import bgLibrary from "../assets/library-bg.jpg"
 
 const experiences = [
   {
-    title: "Senior Software Engineer",
-    location: "Binus University / Remote",
+    title: "Junior Laboratory Assistant",
+    location: "BINUS University",
+    timeframe: "Feb 2024 - Agt 2024",
+    description: "Description of first experience and skills learned."
+  },
+   {
+    title: "Junior Laboratory Assistant",
+    location: "BINUS University",
     timeframe: "2023 - Present",
-    skills: ["React", "Node.js", "TypeScript", "AWS"],
-    description: "Developed and maintained scalable web applications. Led migration of legacy systems, optimized performance by 30%.",
-    progress: 90
+    description: "Description of first experience and skills learned."
   },
   {
-    title: "Software Engineer",
-    location: "Tech Startup Inc.",
-    timeframe: "2020 - 2023",
-    skills: ["API Design", "SQL", "NoSQL", "Azure"],
-    description: "Worked on backend services, database management, and cloud deployments. Mentored junior developers.",
-    progress: 75
-  },
-  {
-    title: "Junior Developer",
-    location: "Freelance / Internships",
+    title: "Experience 3",
+    location: "Location 3",
     timeframe: "2018 - 2020",
-    skills: ["Frontend Development", "Debugging", "Agile"],
-    description: "Assisted in client-side development, learned agile methodology, fixed bugs, and added small features.",
-    progress: 60
+    description: "Description of third experience."
   }
-];
+]
 
 const ExperiencePage: React.FC = () => {
+  const [page, setPage] = useState(0)
+  const totalPages = experiences.length
+  const current = experiences[page]
+
+  const nextPage = () => setPage((p) => (p + 1 < totalPages ? p + 1 : p))
+  const prevPage = () => setPage((p) => (p - 1 >= 0 ? p - 1 : p))
+
   return (
-    <section className="min-h-screen bg-stone-600 text-white pt-24 px-4 md:px-12 max-h-[80vh] overflow-y-auto scrollbar-custom p-4">
-      <div className="container mx-auto text-center">
-        <h2 className="text-5xl font-bold mb-12 text-lime-300">Experience</h2>
-      </div>
+    <div
+      className="min-h-screen bg-cover bg-center flex flex-col items-center"
+      // style={{ backgroundImage: `url(${bgLibrary})` }}
+    >
+      <ExperienceBook
+        page={page + 1}
+        totalPages={totalPages}
+        onPrev={prevPage}
+        onNext={nextPage}
+      >
+        <div>
+          <h2 className="font-semibold mb-1 text-3xl">{current.title}</h2>
+          <p className="opacity-80 text-base">
+            {current.location} • {current.timeframe}
+          </p>
+          <p className="mt-2 text-xl">{current.description}</p>
+        </div>
+      </ExperienceBook>
+    </div>
+  )
+}
 
-      <div className="space-y-8">
-        {experiences.map((exp, idx) => (
-          <ExperienceCard key={idx} {...exp} />
-        ))}
-      </div>
-    </section>
-  );
-};
-
-export default ExperiencePage;
+export default ExperiencePage
